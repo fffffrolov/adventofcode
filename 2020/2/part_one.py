@@ -1,7 +1,6 @@
 import re
 import sys
 from pathlib import Path
-from typing import List, Optional
 
 
 def test_password(password: str, letter: str, min_v: str, max_v: str) -> bool:
