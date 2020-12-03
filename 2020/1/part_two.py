@@ -1,7 +1,13 @@
 import sys
 from pathlib import Path
 from typing import List, Optional
+from itertools import combinations
 
+
+def get_data() -> List[str]:
+    with Path('./input.txt').open() as input_file:
+        lines = [int(el) for el in input_file.read().splitlines()]
+    return lines
 
 
 def find_parts_for_value(value: int, lines: List[str]) -> Optional[int]:
@@ -13,8 +19,7 @@ def find_parts_for_value(value: int, lines: List[str]) -> Optional[int]:
 
 
 def calculate() -> Optional[int]:
-    with Path('./input.txt').open() as input_file:
-        lines = [int(el) for el in input_file.read().splitlines()]
+    lines = get_data()
 
     for index, line in enumerate(lines):
         remainder = 2020 - line
@@ -23,13 +28,8 @@ def calculate() -> Optional[int]:
             return parts_multiplication * line
 
 
-def main():
+if __name__ == '__main__':
     result = calculate()
     if result is None:
         sys.stdout.write('Oh now! There is no result!\n')
     sys.stdout.write(f'resilt is \n{result}\n')
-
-
-
-if __name__ == '__main__':
-    main()

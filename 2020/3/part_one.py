@@ -12,11 +12,10 @@ def slither() -> int:
 	started = False
 	with Path('./input.txt').open() as input_file:
 		for line in input_file.readlines():
-			line = line.strip()
 			if not started: 
 				started = True
 				continue
-			
+			line = line.strip()
 			index = get_next_index(index, len(line))
 			if line[index] == '#':
 				trees += 1
