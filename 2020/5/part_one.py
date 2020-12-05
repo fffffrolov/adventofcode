@@ -1,6 +1,5 @@
 import sys
 from pathlib import Path
-from typing import Tuple
 from utils import get_seat_by_code, get_seat_id, sortig_by_farthest
 
 
