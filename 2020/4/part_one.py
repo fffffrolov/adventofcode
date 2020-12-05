@@ -19,11 +19,13 @@ def scanner() -> int:
             passport += line
             
             if not line:
-                valid_passports += 1 if is_passport_valid(passport) else 0
+                if is_passport_valid(passport):
+                    valid_passports += 1
                 passport = ''
         
         # check last passport
-        valid_passports += 1 if is_passport_valid(passport) else 0
+        if is_passport_valid(passport):
+            valid_passports += 1
 
     return valid_passports
 
