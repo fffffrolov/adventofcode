@@ -1,35 +1,33 @@
 import sys
 from pathlib import Path
 
-
-def scanners() -> int:
-    def count_valid():
-        nonlocal valid_passports
-        is_valid = len(current_passport_keys) == len(required_keys)
-        if is_valid:
-            valid_passports += 1
-
-    valid_passports = 0
+def is_passport_valid(passport: str) -> bool:
     required_keys = ('byr', 'iyr', 'eyr', 'hgt', 'hcl', 'pid', 'ecl')
-    current_passport_keys = set()
+    for key in required_keys:
+        if not f'{key}:' in passport:
+            return False
+    return True
+
+
+def scanner() -> int:
+    valid_passports = 0
+    passport = ''
 
     with Path('./input.txt').open() as input_file:
         for line in input_file.readlines():
+            line = line.strip()
+            passport += line
             
-            for key in required_keys: 
-                if f'{key}:' in line: 
-                    current_passport_keys.add(key)
-            
-            if line == '\n':
-                count_valid()
-                current_passport_keys = set()
+            if not line:
+                valid_passports += 1 if is_passport_valid(passport) else 0
+                passport = ''
         
         # check last passport
-        count_valid()
+        valid_passports += 1 if is_passport_valid(passport) else 0
 
     return valid_passports
 
 
 if __name__ == '__main__':
-    result = scanners()
+    result = scanner()
     sys.stdout.write(f'Valid: {result}\n')
