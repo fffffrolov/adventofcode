@@ -1,10 +1,11 @@
 import sys
 from pathlib import Path
 
+
 def is_passport_valid(passport: str) -> bool:
     required_keys = ('byr', 'iyr', 'eyr', 'hgt', 'hcl', 'pid', 'ecl')
     for key in required_keys:
-        if not f'{key}:' in passport:
+        if f'{key}:' not in passport:
             return False
     return True
 
@@ -16,13 +17,13 @@ def scanner() -> int:
     with Path('./input.txt').open() as input_file:
         for line in input_file.readlines():
             line = line.strip()
-            passport += line
-            
+            passport += line + ' '
+
             if not line:
                 if is_passport_valid(passport):
                     valid_passports += 1
                 passport = ''
-        
+
         # check last passport
         if is_passport_valid(passport):
             valid_passports += 1

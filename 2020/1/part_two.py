@@ -1,7 +1,6 @@
 import sys
 from pathlib import Path
 from typing import List, Optional
-from itertools import combinations
 
 
 def get_data() -> List[str]:
@@ -10,22 +9,24 @@ def get_data() -> List[str]:
     return lines
 
 
-def find_parts_for_value(value: int, lines: List[str]) -> Optional[int]:
-    data = {}
+def find_summands_for_value(value: int, lines: List[str]) -> Optional[int]:
+    summands = {}
     for line in lines:
-        if data.get(line):
-            return data[line] * line
-        data[value - line] = line
+        if summands.get(line):
+            return summands[line] * line
+        summands[value - line] = line
 
 
 def calculate() -> Optional[int]:
     lines = get_data()
 
     for index, line in enumerate(lines):
-        remainder = 2020 - line
-        parts_multiplication = find_parts_for_value(remainder, lines[:index]+lines[index+1:])
-        if parts_multiplication:
-            return parts_multiplication * line
+        list_without_value = lines[:index] + lines[index+1:]
+        summands_multiplication = find_summands_for_value(
+            2020 - line, list_without_value,
+        )
+        if summands_multiplication is not None:
+            return summands_multiplication * line
 
 
 if __name__ == '__main__':
