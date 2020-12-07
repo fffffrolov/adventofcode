@@ -18,7 +18,7 @@ def count() -> int:
             elif len(group_values) == 0:
                 continue
             else:
-                group_values = group_values.intersection(set(line))
+                group_values &= set(line)
     total += len(group_values)
     return total
 
