@@ -1,7 +1,7 @@
 import re
 import sys
 from pathlib import Path
-from typing import Tuple
+from typing import Optional, Tuple, List
 
 split_rule_regex = re.compile(r'(?:([a-z]+ [a-z]+){1} bags contain )(.*)', re.IGNORECASE)
 contained_bags_regex = re.compile(r'((?: ?(?P<num>\d+) (?P<bag>[a-z]+ [a-z]+) bag)(?:s)?(?:,|\.))', re.IGNORECASE)
@@ -12,7 +12,7 @@ def expand_rule(rule: str) -> Tuple:
     return main_bag, {bag[2]: int(bag[1]) for bag in contained_bags_regex.findall(contained_bags)}
 
 
-def count_bag_children(tree, bag):
+def count_bag_children(tree: dict, bag: str) -> int:
     count = 0
     bag_children = tree.get(bag) or {}
     for child, child_num in bag_children.items():
