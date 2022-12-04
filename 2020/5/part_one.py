@@ -3,20 +3,20 @@ from pathlib import Path
 
 
 def get_code_id(code: str) -> int:
-    '''
+    """
     convert code to binary and then to int
     FFFFFFFLLR -> 0000000001 -> 1
     FFFFFFFLRL -> 0000000010 -> 2
     ...
     BFBBBBBRRR -> 1011111111 -> 767
     BBBBBBBRRR -> 1111111111 -> 1023
-    '''
+    """
     return int(
         '0b'+code.replace('B', '1')
         .replace('R', '1')
         .replace('F', '0')
-        .replace('L', '0'), 
-        2
+        .replace('L', '0'),
+        2,
     )
 
 

@@ -3,8 +3,10 @@ import sys
 from pathlib import Path
 from typing import Tuple
 
-split_rule_regex = re.compile(r'(?:([a-z]+ [a-z]+){1} bags contain )(.*)', re.IGNORECASE)
-contained_bags_regex = re.compile(r'(?:(?: ?\d ([a-z]+ [a-z]+) bag)(?:s)?(?:,|\.))', re.IGNORECASE)
+split_rule_regex = re.compile(
+    r'(?:([a-z]+ [a-z]+){1} bags contain )(.*)', re.IGNORECASE)
+contained_bags_regex = re.compile(
+    r'(?:(?: ?\d ([a-z]+ [a-z]+) bag)(?:s)?(?:,|\.))', re.IGNORECASE)
 
 
 def expand_rule(rule: str) -> Tuple:

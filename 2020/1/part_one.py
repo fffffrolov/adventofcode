@@ -4,15 +4,15 @@ from typing import Optional
 
 
 def calculate() -> Optional[int]:
-    summands = {}
+    terms = {}
     with Path('./input.txt').open() as input_file:
         lines = input_file.read().splitlines()
 
     for line in lines:
         number = int(line)
-        if summands.get(number):
-            return summands[number] * number
-        summands[2020 - int(number)] = number
+        if terms.get(number):
+            return terms[number] * number
+        terms[2020 - int(number)] = number
 
 
 if __name__ == '__main__':

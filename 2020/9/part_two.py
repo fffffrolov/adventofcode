@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-from typing import Tuple, List
+from typing import List, Tuple
 
 
 def has_summands(group: list, total: int) -> bool:
@@ -46,7 +46,7 @@ def find_encryption_weakness() -> int:
             if sum(sequence) > invalid_number:
                 sequences.pop(ind)
 
-        sequences.append([el, ])
+        sequences.append([el])
 
 
 if __name__ == '__main__':

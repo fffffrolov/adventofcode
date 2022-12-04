@@ -5,8 +5,9 @@ from pathlib import Path
 
 def test_password(password: str, letter: str, min_v: str, max_v: str) -> bool:
     max_v = int(max_v) + 1
-    regex = re.compile(f'^(?!(.*{letter}){{{max_v}}})(.*{letter}){{{min_v}}}.*$')
-    return True if regex.match(password) else False
+    regex = re.compile(
+        f'^(?!(.*{letter}){{{max_v}}})(.*{letter}){{{min_v}}}.*$')
+    return bool(regex.match(password))
 
 
 def count() -> int:

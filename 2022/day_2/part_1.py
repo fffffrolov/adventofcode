@@ -1,7 +1,10 @@
+import os
 import sys
 import time
 from pathlib import Path
 from typing import Iterator
+
+BASE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 POINTS_MAXTRIX = {
     'A': {
@@ -23,9 +26,8 @@ POINTS_MAXTRIX = {
 
 
 def _read_input() -> Iterator[str]:
-    with Path('./input.txt').open() as input_file:
-        for line in input_file.readlines():
-            yield line
+    with Path(BASE_PATH, 'input.txt').open() as input_file:
+        yield from input_file.readlines()
 
 
 def round_score(letter_1: str, letter_2: str) -> int:
@@ -48,7 +50,8 @@ def main():
 
     end = time.time()
 
-    sys.stdout.write(f'result = {result}\ntime: {(end - start)*1000.0:.3f}ms\n')
+    sys.stdout.write(
+        f'result = {result}\ntime: {(end - start)*1000.0:.3f}ms\n')
 
 
 if __name__ == '__main__':

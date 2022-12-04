@@ -1,16 +1,18 @@
 import sys
 from pathlib import Path
-from typing import Tuple, Optional
+from typing import Optional, Tuple
 
 
 class BaseExecutor:
-    def __init__(self,
-                 commands: list,
-                 steps: list = [],
-                 cursor: int = 0,
-                 accumulator: int = 0):
+    def __init__(
+        self,
+        commands: list,
+        steps: list = None,
+        cursor: int = 0,
+        accumulator: int = 0,
+    ):
         self.commands = commands
-        self.steps = steps
+        self.steps = steps or []
         self.cursor = cursor
         self.accumulator = accumulator
 
@@ -19,7 +21,8 @@ class BaseExecutor:
 
     @property
     def is_looped(self) -> bool:
-        next_step = self.get_command_key(self.cursor, self.commands[self.cursor])
+        next_step = self.get_command_key(
+            self.cursor, self.commands[self.cursor])
         return next_step in self.steps
 
     def run(self) -> Optional[int]:
@@ -75,7 +78,8 @@ class MainExecutor(BaseExecutor):
         elif 'nop' in replace_command:
             commands[self.cursor] = replace_command.replace('nop', 'jmp')
 
-        forked_executor = BaseExecutor(commands, self.steps, self.cursor, self.accumulator)
+        forked_executor = BaseExecutor(
+            commands, self.steps, self.cursor, self.accumulator)
         return forked_executor()
 
 
