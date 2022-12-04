@@ -1,3 +1,4 @@
+# https://adventofcode.com/2022/day/1
 import os
 import sys
 import time
