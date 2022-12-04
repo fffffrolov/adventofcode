@@ -22,7 +22,8 @@ class BaseExecutor:
     @property
     def is_looped(self) -> bool:
         next_step = self.get_command_key(
-            self.cursor, self.commands[self.cursor])
+            self.cursor, self.commands[self.cursor],
+        )
         return next_step in self.steps
 
     def run(self) -> Optional[int]:
@@ -79,7 +80,8 @@ class MainExecutor(BaseExecutor):
             commands[self.cursor] = replace_command.replace('nop', 'jmp')
 
         forked_executor = BaseExecutor(
-            commands, self.steps, self.cursor, self.accumulator)
+            commands, self.steps, self.cursor, self.accumulator,
+        )
         return forked_executor()
 
 

@@ -50,8 +50,7 @@ def main():
 
     end = time.time()
 
-    sys.stdout.write(
-        f'result = {result}\ntime: {(end - start)*1000.0:.3f}ms\n')
+    sys.stdout.write(f'result = {result}\ntime: {(end - start)*1000.0:.3f}ms\n')
 
 
 if __name__ == '__main__':

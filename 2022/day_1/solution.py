@@ -43,7 +43,8 @@ def main():
     end = time.time()
 
     sys.stdout.write(
-        f'max is {max_value}\ntop three is {top_three}\ntime: {(end - start)*1000.0:.3f}ms\n')
+        f'max is {max_value}\ntop three is {top_three}\ntime: {(end - start)*1000.0:.3f}ms\n',
+    )
 
 
 if __name__ == '__main__':

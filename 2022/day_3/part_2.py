@@ -11,7 +11,6 @@ BASE_PATH = os.path.dirname(os.path.realpath(__file__))
 letter_scores = {
     letter: index + 1
     for index, letter in enumerate(string.ascii_letters)
-
 }
 
 
@@ -58,8 +57,7 @@ def main():
 
     end = time.time()
 
-    sys.stdout.write(
-        f'result = {result}\ntime: {(end - start)*1000.0:.3f}ms\n')
+    sys.stdout.write(f'result = {result}\ntime: {(end - start)*1000.0:.3f}ms\n')
 
 
 if __name__ == '__main__':

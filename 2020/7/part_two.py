@@ -4,9 +4,11 @@ from pathlib import Path
 from typing import Tuple
 
 split_rule_regex = re.compile(
-    r'(?:([a-z]+ [a-z]+){1} bags contain )(.*)', re.IGNORECASE)
+    r'(?:([a-z]+ [a-z]+){1} bags contain )(.*)', re.IGNORECASE,
+)
 contained_bags_regex = re.compile(
-    r'((?: ?(?P<num>\d+) (?P<bag>[a-z]+ [a-z]+) bag)(?:s)?(?:,|\.))', re.IGNORECASE)
+    r'((?: ?(?P<num>\d+) (?P<bag>[a-z]+ [a-z]+) bag)(?:s)?(?:,|\.))', re.IGNORECASE,
+)
 
 
 def expand_rule(rule: str) -> Tuple:

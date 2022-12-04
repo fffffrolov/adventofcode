@@ -6,7 +6,8 @@ from pathlib import Path
 def test_password(password: str, letter: str, min_v: str, max_v: str) -> bool:
     max_v = int(max_v) + 1
     regex = re.compile(
-        f'^(?!(.*{letter}){{{max_v}}})(.*{letter}){{{min_v}}}.*$')
+        f'^(?!(.*{letter}){{{max_v}}})(.*{letter}){{{min_v}}}.*$',
+    )
     return bool(regex.match(password))
 
 
