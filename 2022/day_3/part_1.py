@@ -52,7 +52,7 @@ def get_sum() -> int:
     return score
 
 
-def main():
+def main() -> None:
     start = time.time()
 
     result = get_sum()

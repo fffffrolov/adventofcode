@@ -44,7 +44,7 @@ def get_total_score() -> int:
     return score
 
 
-def main():
+def main() -> None:
     start = time.time()
 
     result = get_total_score()

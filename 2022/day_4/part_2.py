@@ -34,7 +34,7 @@ def get_total_overlapped() -> int:
     return total
 
 
-def main():
+def main() -> None:
     start = time.time()
 
     result = get_total_overlapped()

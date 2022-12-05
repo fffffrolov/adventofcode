@@ -34,7 +34,7 @@ def find_top(input_data: str, limit: int = 3) -> int:
     return values[:limit]
 
 
-def main():
+def main() -> None:
     start = time.time()
 
     data = _read_input()

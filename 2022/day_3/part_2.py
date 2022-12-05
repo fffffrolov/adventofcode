@@ -29,15 +29,7 @@ def batched(iterable: Iterator[str], n: int) -> Iterator[Iterator[Iterator[str]]
 def get_group_score(group: Iterator[Iterator[str]]) -> int:
     score = 0
 
-    intersection = None
-
-    for line in group:
-        if intersection is None:
-            intersection = set(line)
-        else:
-            intersection = set(line).intersection(intersection)
-
-    for common in intersection:
+    for common in set.intersection(*map(set, group)):
         score += letter_scores.get(common, 0)
 
     return score
@@ -51,7 +43,7 @@ def get_sum():
     return score
 
 
-def main():
+def main() -> None:
     start = time.time()
 
     result = get_sum()
